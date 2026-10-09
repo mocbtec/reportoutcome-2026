@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard ผลสัมฤทธิ์ ปีงบประมาณ 2569 กระทรวงพาณิชย์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B1F44;--navy2:#5D7099;--gold:#C9A227;--gold2:#EBD78F;--bg:#fff;--ink:#0B1F44;--mut:#6b7488;--line:#e3e7ef;--panel:#f6f8fc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1429;--ink:#eef1f8;--mut:#9aa6c0;--line:#22305a;--panel:#111d3b;--navy:#8fa8e0;--navy2:#4a5f95;--gold2:#6b5a1c}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:13px/1.4 Sarabun,'Noto Sans Thai',Tahoma,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:14px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-bottom:2px solid var(--gold);padding-bottom:8px;flex-wrap:wrap}
+h1{font-size:19px;margin:0;font-weight:700;color:var(--ink)}h1 small{display:block;font-size:12px;font-weight:400;color:var(--mut)}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px 12px;border-radius:6px;font:inherit;cursor:pointer}
+.btn.on{background:#0B1F44;color:#fff;border-color:#0B1F44}.btn.gold{background:var(--gold);border-color:var(--gold);color:#0B1F44;font-weight:700}
+.tabs{display:flex;gap:6px;margin:10px 0}
+select{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px;border-radius:6px;font:inherit;max-width:100%}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.tab{display:block;margin-top:14px}.sh{font-size:15px;margin:0 0 8px;color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:3px}#tip{position:fixed;z-index:9;display:none;max-width:260px;background:#0B1F44;color:#fff;border-left:3px solid #C9A227;padding:7px 10px;border-radius:5px;font-size:12px;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}#tip b{color:#EBD78F}#tip div{display:flex;justify-content:space-between;gap:12px}.hit{cursor:pointer}
+.grid1{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:14px;align-items:start}
+@media(max-width:820px){.grid1{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--bg)}
+.card h3{margin:0 0 6px;font-size:13px;color:var(--ink);border-left:3px solid var(--gold);padding-left:6px}
+.sc{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{background:#0B1F44;color:#fff;font-weight:600;font-size:11px;padding:4px 5px;white-space:nowrap}
+td{border-bottom:1px solid var(--line);padding:3px 5px;font-size:12px;vertical-align:middle}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}td.nm{min-width:240px;white-space:normal}
+tr.g td{background:var(--panel);font-weight:700;color:var(--ink);border-left:3px solid var(--gold);font-size:11px}
+.hc{text-align:center;font-size:11px;font-weight:600;min-width:52px;color:#fff;font-variant-numeric:tabular-nums}
+.h4{background:#0B1F44}.h3{background:#5D7099}.h2{background:#EBD78F;color:#0B1F44}.h1{background:#F7EFCF;color:#0B1F44}.h0{background:var(--panel);color:var(--mut);font-weight:400}
+.bl{position:relative;height:12px;min-width:130px;background:linear-gradient(90deg,#dfe4ee 0 33.3%,#e9ecf3 33.3% 66.6%,#f3f5f9 66.6%)}
+.bl i{position:absolute;left:0;top:4px;height:4px;background:#0B1F44}.bl b{position:absolute;top:1px;width:2px;height:10px;background:#C9A227}.bl u{position:absolute;top:2px;width:7px;height:7px;margin-left:-3px;border:1.5px solid #888;border-radius:50%;background:#fff}
+.stats{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;margin:0 0 6px}.stats span.on{background:#0B1F44;color:#fff}.stats span[onclick]{cursor:pointer}.stats span{padding:2px 9px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}.stats b{color:var(--gold)}
+.lg{display:flex;gap:10px;flex-wrap:wrap;font-size:10.5px;color:var(--mut);margin-top:6px;align-items:center}.lg s{display:inline-block;width:11px;height:9px;text-decoration:none;vertical-align:-1px;margin-right:3px}
+.ft{font-size:10px;color:var(--mut);margin-top:6px}#fl{display:none;font-size:11px;color:var(--mut)}
+@page{size:A4 landscape;margin:6mm}
+@media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ :root{--bg:#fff;--ink:#0B1F44;--mut:#6b7488;--line:#d5dae5;--panel:#f6f8fc;--navy:#0B1F44;padding:0}
+ body{font-size:8pt}.wrap{max-width:none;padding:0}.noprint,.tabs{display:none!important}#fl{display:block}
+ h1{font-size:12pt}header{padding-bottom:3px}.tab{margin-top:0}.sh{font-size:10pt;margin-bottom:3px}#p2{break-before:page;zoom:.88}#p1,#p2{break-inside:avoid}
+ .sc{overflow:visible}td{padding:1px 4px;font-size:7pt;line-height:1.15}th{font-size:6.5pt;padding:2px 3px}td.nm{max-width:none}
+ .bl{height:9px;min-width:110px}.bl i{top:3px}.bl b{height:8px}.bl u{top:1px}.hc{font-size:6.5pt}
+ .grid1{grid-template-columns:105mm 1fr;gap:6px}.card{padding:5px}.stats{margin:0 0 2px}.stats span{padding:0 6px;font-size:7pt}.lg{font-size:6.5pt;margin-top:2px}.ft{font-size:6pt;margin-top:2px}
+ tr.g td{font-size:6.5pt}
+}
+</style></head><body><div class="wrap">
+<header><h1>Dashboard ตัวชี้วัดผลสัมฤทธิ์ ปีงบประมาณ 2569<small>กระทรวงพาณิชย์ · ต.ค. 68 – ก.ย. 69 · รายงานรายไตรมาส · <span id="src"></span></small></h1>
+<button class="btn gold noprint" onclick="window.print()">🖨 พิมพ์ (A4 แนวนอน)</button></header>
+
+<section class="tab" id="p1"><h2 class="sh">1 · ผลสัมฤทธิ์กระทรวง</h2>
+<div class="grid1"><div class="card"><h3>Radar · % ผลงานเทียบแผนปี 69 (วงทอง = 100%)</h3><div id="radar"></div>
+<div class="lg"><span><s style="background:#C9A227"></s>แผน 69 = 100%</span><span><s style="background:#999"></s>ผลปี 68</span><span><s style="background:#0B1F44"></s>ผลปี 69</span></div></div>
+<div class="card"><h3>ตัวชี้วัดผลสัมฤทธิ์ (5 ตัว) · แผน / ผลจริง / เทียบรายปี / ภาพรวมรายไตรมาส</h3><div class="sc"><table id="kt"></table></div>
+<div class="lg">กราฟแท่ง = ความก้าวหน้าสะสมเทียบแผนปี 69 รายไตรมาส (Q1–Q4) · เส้นประทอง = 100% ของแผน</div></div></div>
+</section>
+
+<section class="tab" id="p2"><h2 class="sh">2 · ตัวชี้วัดผลการดำเนินงานตามเป้าหมายการให้บริการกระทรวง (31 ตัวชี้วัด)</h2>
+<div class="bar noprint"><button class="btn" onclick="rf()">↻ รีเฟรช</button><button class="btn" id="m2" onclick="mode()">จัดกลุ่มตามเป้าหมายกระทรวง</button>
+<button class="btn" id="b68" onclick="tg('y')">เทียบผลปี 68</button><button class="btn" id="bag" onclick="tg('a')">หน่วยงานที่เกี่ยวข้อง</button><select id="fg" onchange="draw()"></select><select id="fa" onchange="draw()"></select></div>
+<div id="fl"></div><div class="stats" id="st"></div>
+<div class="sc"><table id="tb"></table></div>
+<div class="lg"><span><s style="background:#0B1F44"></s>≥100% ของแผน</span><span><s style="background:#5D7099"></s>70–99%</span><span><s style="background:#EBD78F"></s>30–69%</span><span><s style="background:#F7EFCF"></s>&lt;30%</span><span><s style="background:#f6f8fc;border:1px solid #ddd"></s>ยังไม่รายงาน/วัดสิ้นปี</span>
+<span>Bullet: แท่งน้ำเงิน = ผลปี 69 · เส้นทอง = แผน (100%) · สเกล 0–150%</span><span id="lgy">○ = ผลปี 68</span><span>ตัวเลขในช่อง Q1–Q4 = ค่ารายไตรมาสตาม Excel · สีตาม % สะสมเทียบแผน</span></div>
+</section>
+<div id="tip"></div><div class="ft" id="ab"></div>
+</div>
+<script>
+const AG={'จร.':'กรมเจรจาการค้าระหว่างประเทศ','คน.':'กรมการค้าภายใน','คต.':'กรมการค้าต่างประเทศ','พค.':'กรมพัฒนาธุรกิจการค้า','ทป.':'กรมทรัพย์สินทางปัญญา','สค.':'กรมส่งเสริมการค้าระหว่างประเทศ','สนค.':'สำนักงานนโยบายและยุทธศาสตร์การค้า','สศท.':'สถาบันส่งเสริมศิลปหัตถกรรมไทย (อ.ม.)','สวอ.':'สถาบันวิจัยและพัฒนาอัญมณีและเครื่องประดับแห่งชาติ (อ.ม.)','สคพ.':'สถาบันระหว่างประเทศเพื่อการค้าและการพัฒนา (อ.ม.)','สป.':'สำนักงานปลัดกระทรวงพาณิชย์'};
+const GO=['เกษตรกร/ผู้ประกอบการสินค้าเกษตร มีรายได้/มูลค่าการค้าเพิ่มขึ้น','ผู้ประกอบการชุมชน มีรายได้/มูลค่าการค้าเพิ่มขึ้น','ผู้ประกอบการยุคใหม่ ได้รับการพัฒนาและส่งเสริม','ศักยภาพด้านการแข่งขันทางการค้าไทยเพิ่มขึ้น','ประชาชนได้รับความคุ้มครองทางการค้า ราคาเป็นธรรม','ไทยเป็นหุ้นส่วนยุทธศาสตร์กับคู่ค้าสำคัญ','ผู้ประกอบการไทยแข่งขัน/ขยายตลาด/ค้าชายแดนเพิ่มขึ้น','องค์กรมีประสิทธิภาพ ธรรมาภิบาล และยั่งยืน'];
+// [no,name,goal,unit,y68,plan,act,[q1..q4],type s=sum r=rate,agencies,flag l=lower better]
+const K=[
+['1','มูลค่าการค้าจากกิจกรรมทั้งในและต่างประเทศ','ล้านบาท',152506.11,133800,224307.58,[9301.55,25637.9,108215.93,81137.99],'s'],
+['2','มูลค่าพาณิชย์อิเล็กทรอนิกส์','ล้านบาท',3360.07,3000,5176.41,[1055.5,735.71,1891.69,1493.51],'s'],
+['3','มูลค่าการค้าผู้ประกอบการฐานรากที่ได้รับการส่งเสริม','ล้านบาท',6438.56,3700,6430.41,[72.28,2346.21,863.11,3148.81],'s'],
+['4','ความพึงพอใจในคุณภาพบริการภาครัฐ','ร้อยละ',93.52,90,76.5,[null,null,null,null],'r'],
+['5','มูลค่าการค้าระหว่างประเทศขยายตัว','ร้อยละ',11.7,5,15.1,[11.6,17.6,21.7,15.1],'r']];
+const I=[
+[1,'มูลค่าการค้าสินค้าเกษตรอัตลักษณ์พื้นถิ่น',0,'ล้านบาท',69.66,62,73.91,[.74,6.66,1.7,64.81],'s','ทป.'],
+[2,'มูลค่าการค้าสินค้าเกษตรปลอดภัย',0,'ล้านบาท',234,30,395,[0,391,0,4],'s','คต. คน.'],
+[3,'มูลค่าการค้าเกษตรแปรรูป/เกษตรนวัตกรรม',0,'ล้านบาท',209.57,35,154.24,[0,0,136.03,18.21],'s','คต.'],
+[4,'มูลค่าการค้าสินค้าเกษตรที่ได้รับการส่งเสริม',0,'ล้านบาท',720.01,630,697.54,[171.49,202.29,292.27,31.49],'s','คน.'],
+[5,'สินค้าเกษตรเป้าหมายราคาสูงกว่าต้นทุนผลิต',0,'ร้อยละ',89.58,80,100,[100,100,100,100],'r','คน.'],
+[6,'มูลค่าการค้าสินค้า/บริการในชุมชนที่ได้รับการส่งเสริม',1,'ล้านบาท',6438.56,3700,6430.41,[72.28,2346.21,863.11,3148.81],'s','พค. คน. สป.'],
+[7,'จำนวนผู้ประกอบการที่ได้รับการส่งเสริม (บริหาร/เทคโนโลยี/ทรัพย์สินทางปัญญา)',2,'ราย',23181,12900,22752,[3238,4858,5656,9000],'s','พค. ทป. สศท. สวอ. สคพ.'],
+[8,'มูลค่าการค้าของผู้ประกอบการที่ได้รับการส่งเสริม',2,'ล้านบาท',4425.8,2300,67525.52,[17.16,20.05,460.92,67027.39],'s','พค. ทป. สศท. สวอ.'],
+[9,'จำนวนทรัพย์สินทางปัญญาที่ได้รับการจดทะเบียน',2,'คำขอ',45834,38500,49378,[12787,12266,7377,16948],'s','ทป.'],
+[10,'มูลค่าการค้า e-commerce ของ SMEs ผ่านช่องทางที่ส่งเสริม',2,'ล้านบาท',3360.07,3000,5176.41,[1055.5,735.71,1891.69,1493.51],'s','สค. พค.'],
+[11,'ผู้ประกอบการระเบียงเศรษฐกิจพิเศษ 4 ภาค ที่ได้รับการพัฒนา',2,'ราย',null,1000,1544,[211,699,559,75],'s','สป.'],
+[12,'อัตราขยายตัวสินค้า/บริการท่องเที่ยวเชิงสร้างสรรค์เข้าระบบคุ้มครอง ทป.',3,'ร้อยละ',20.95,7,13,[0,0,0,13],'r','ทป.'],
+[13,'วงเงินจดทะเบียนสัญญาหลักประกันทางธุรกิจเพิ่มขึ้น',3,'ร้อยละ',14.36,10,14,[null,null,null,14],'r','พค.'],
+[14,'ประสิทธิภาพการดำเนินงานธุรกิจ SMEs (จำนวนวันจัดตั้งธุรกิจ · อันดับ)',3,'อันดับ',null,18,17,[null,null,null,null],'l','พค.'],
+[15,'ผลงานวิจัย/นวัตกรรม/ข้อเสนอเชิงนโยบายที่นำไปใช้ประโยชน์',3,'เรื่อง',40,29,39,[1,12,6,20],'s','สนค. สวอ. สคพ.'],
+[16,'ราคาสินค้าเป้าหมายที่จำเป็นลดลง',4,'ร้อยละ',30,30,30,[30,30,30,30],'r','คน.'],
+[17,'สินค้า/บริการเป้าหมายมีราคาสอดคล้องกับต้นทุน',4,'ร้อยละ',99.07,98,99.07,[99.44,99.17,99.13,99.07],'r','คน.'],
+[18,'จำนวนการประชุมระหว่างประเทศด้านเศรษฐกิจการค้า/ความร่วมมือ',5,'ครั้ง',168,73,137,[45,21,30,41],'s','จร. ทป.'],
+[19,'มูลค่าการค้าระหว่างประเทศขยายตัว',5,'ร้อยละ',11.7,5,15.1,[11.6,17.6,21.7,15.1],'r','สนค.'],
+[20,'มูลค่าการเจรจาการค้าผ่านกิจกรรมส่งเสริมการค้า ปท.',6,'ล้านบาท',13255.02,129400,154063.79,[8829.92,24911.22,107243.77,13064.67],'s','สค. สป.'],
+[21,'มูลค่าส่งออกกลุ่มสินค้าธุรกิจเพื่อความยั่งยืน',6,'ล้านบาท',223.04,35,52.88,[0,0,52.88,0],'s','สค.'],
+[22,'มูลค่าส่งออกอุตสาหกรรมซอฟต์พาวเวอร์',6,'ล้านบาท',11039.28,1250,1192.38,[282.24,71.49,28.36,810.29],'s','สค.'],
+[23,'มูลค่าการสั่งซื้อเพื่อส่งออกของ SME ที่เข้าร่วมกิจกรรม',6,'ล้านบาท',329.73,70,152.32,[0,35.19,0,117.13],'s','สค.'],
+[24,'อัตราขยายตัวมูลค่าการค้าชายแดนในจังหวัด SEZ',6,'ร้อยละ',9.22,1,14.23,[5.65,3.35,9.14,14.23],'r','คต.'],
+[25,'ความพึงพอใจในคุณภาพการให้บริการของหน่วยงานในกระทรวง',7,'ร้อยละ',93.52,90,76.5,[null,null,null,null],'r','สป. คต. ทป. พค. สค. สวอ.'],
+[26,'สัดส่วนกระบวนงานที่ปรับเป็นดิจิทัล',7,'ร้อยละ',79.21,60,92.5,[null,null,null,null],'r','คต. สค.'],
+[27,'ความสำเร็จตามแผนปฏิบัติราชการกระทรวง',7,'ร้อยละ',96.3,85,null,[null,null,null,null],'r','สป.'],
+[28,'ดัชนีคุณธรรมและจริยธรรมของบุคลากรภาครัฐ',7,'คะแนน',96.48,92.77,null,[null,null,null,null],'r','สป.'],
+[29,'สัดส่วนหน่วยงานผ่านเกณฑ์ประเมินคุณธรรมและความโปร่งใส (ITA)',7,'ร้อยละ',91.67,100,null,[null,null,null,null],'r','ทุกหน่วยงาน'],
+[30,'ความสำเร็จโครงการตามนโยบาย Cloud First',7,'ร้อยละ',null,100,100,[23.03,57.5,79.9,100],'r','สป. คต. คน. จร. ทป. สค. สนค.'],
+[31,'บุคลากรที่ผ่านการอบรมและได้รับใบประกาศนียบัตร (สพร.)',7,'ร้อยละ',null,90,69.05,[4.17,25.2,69.05,100],'r','สป. สนค. สศท.']];
+const f=n=>n==null?'–':n.toLocaleString('en-US',{maximumFractionDigits:2});
+function cum(q,t){if(t!='s')return q;let s=0,any=false;return q.map(v=>{if(v==null)return null;s+=v;return s})}
+function pct(v,p,t){if(v==null)return null;return t=='l'?p/v*100:v/p*100}
+function hc(p){return p==null?'h0':p>=100?'h4':p>=70?'h3':p>=30?'h2':'h1'}
+function ps(p){return p==null?'–':p>999?'>999':Math.round(p)}
+// ---- Tab 1
+function radar(){const C=190,R=130,M=320,N=5,sv=[];const ang=i=>-Math.PI/2+i*2*Math.PI/N;
+ const pt=(i,p)=>{const r=R*Math.min(p,M)/M;return[C+r*Math.cos(ang(i)),C+r*Math.sin(ang(i))]};
+ let s=`<svg viewBox="0 0 380 380" width="100%" style="max-width:420px;display:block;margin:auto">`;
+ [100,200,300].forEach(v=>{const g=[...Array(N)].map((_,i)=>pt(i,v).join(',')).join(' ');s+=`<polygon points="${g}" fill="none" stroke="${v==100?'#C9A227':'#c9cfdd'}" stroke-width="${v==100?1.6:.7}" ${v==100?'stroke-dasharray="4 3"':''}/><text x="${C+3}" y="${C-R*v/M-2}" font-size="8" fill="#8a93a8">${v}%</text>`});
+ K.forEach((k,i)=>{const[x,y]=pt(i,M);s+=`<line x1="${C}" y1="${C}" x2="${x}" y2="${y}" stroke="#d5dae5"/>`;
+  const lx=C+(R+22)*Math.cos(ang(i)),ly=C+(R+22)*Math.sin(ang(i));s+=`<text x="${lx}" y="${ly}" text-anchor="middle" font-size="10" font-weight="700" fill="currentColor">ตัวชี้วัด ${k[0]}</text>`});
+ const poly=(fn,st)=>`<polygon points="${K.map((k,i)=>pt(i,fn(k)).join(',')).join(' ')}" ${st}/>`;
+ s+=poly(k=>pct(k[3],k[4],'s')||0,'fill="none" stroke="#999" stroke-width="1.4" stroke-dasharray="3 3"');
+ s+=poly(k=>pct(k[5],k[4],'s')||0,'fill="#0B1F44" fill-opacity=".18" stroke="#0B1F44" stroke-width="2"');
+ K.forEach((k,i)=>{const p=pct(k[5],k[4],'s'),[x,y]=pt(i,p);s+=`<circle cx="${x}" cy="${y}" r="3.5" fill="#C9A227" stroke="#0B1F44"/><text x="${x+(x<C?-6:6)}" y="${y-5}" text-anchor="${x<C?'end':'start'}" font-size="10" font-weight="700" fill="#C9A227">${Math.round(p)}%</text>`});
+ K.forEach((k,i)=>{const[x,y]=pt(i,M);s+=`<line class="hit" data-i="${i}" x1="${C}" y1="${C}" x2="${x}" y2="${y}" stroke="transparent" stroke-width="34"/>`});
+ const el=document.getElementById('radar');el.innerHTML=s+'</svg>';const tip=document.getElementById('tip');
+ const show=e=>{const h=e.target.closest('.hit');if(!h){tip.style.display='none';return}const k=K[+h.dataset.i],pa=pct(k[5],k[4],'s'),py=pct(k[3],k[4],'s'),d=k[7]=='s'?((k[5]/k[3]-1)*100).toFixed(1)+'%':((k[5]-k[3]>=0?'+':'')+(k[5]-k[3]).toFixed(2)+' pp');
+  tip.innerHTML=`<b>ตัวชี้วัด ${k[0]}: ${k[1]}</b><div><span>แผนปี 69</span><span>${f(k[4])} ${k[2]}</span></div><div><span>ผลปี 68</span><span>${f(k[3])}</span></div><div><span>ผลปี 69</span><span><b>${f(k[5])}</b></span></div><div><span>% ของแผน</span><span><b>${f(pa)}%</b></span></div><div><span>เทียบผลปี 68</span><span>${d}</span></div>`;
+  tip.style.display='block';tip.style.left=Math.min(e.clientX+14,innerWidth-270)+'px';tip.style.top=(e.clientY+14)+'px'};
+ ['pointermove','pointerdown'].forEach(n=>el['on'+n]=show);el.onpointerleave=()=>tip.style.display='none'}
+function kpi(){let h='<tr><th>#</th><th style="text-align:left">ตัวชี้วัด</th><th>หน่วย</th><th class="n">ผลปี 68</th><th class="n">แผนปี 69</th><th class="n">ผลปี 69</th><th class="n">% ของแผน</th><th class="n">เทียบ 68</th><th>ภาพรวมรายไตรมาส (สะสม % ของแผน)</th></tr>';
+ K.forEach(k=>{const[n,nm,u,y,p,a,q,t]=k,pc=pct(a,p,t),cu=cum(q,t),c=cu.map(v=>pct(v,p,t));
+  const d=t=='s'?((a/y-1)*100).toFixed(0)+'%':((a-y>=0?'+':'')+(a-y).toFixed(1)+' pp');
+  const W=20,H=34,mx=Math.max(120,...c.filter(v=>v!=null));
+  let sv=`<svg width="124" height="${H+12}" viewBox="0 0 124 ${H+12}">`;
+  const by=H-H*100/mx;sv+=`<line x1="0" x2="124" y1="${by}" y2="${by}" stroke="#C9A227" stroke-dasharray="3 2"/>`;
+  c.forEach((v,i)=>{const x=3+i*30;if(v==null){sv+=`<text x="${x+10}" y="${H-2}" text-anchor="middle" font-size="8" fill="#999">–</text>`}else{const h=Math.max(1,H*Math.min(v,mx)/mx);sv+=`<rect x="${x}" y="${H-h}" width="${W}" height="${h}" fill="${v>=100?'#0B1F44':'#5D7099'}"/><text x="${x+10}" y="${H-h-2}" text-anchor="middle" font-size="7.5" fill="currentColor">${ps(v)}</text>`}
+   sv+=`<text x="${x+10}" y="${H+9}" text-anchor="middle" font-size="7.5" fill="#8a93a8">Q${i+1}</text><rect class="qh" x="${x-3}" y="0" width="28" height="${H+12}" fill="transparent" data-tip="<b>ตัวชี้วัด ${n} · ไตรมาส ${i+1}</b><div><span>ช่วง</span><span>${QM[i]}</span></div><div><span>ผลรายไตรมาส</span><span>${f(q[i])}</span></div>${t=='s'?`<div><span>ผลสะสม</span><span>${f(cu[i])}</span></div>`:''}<div><span>แผนปี 69</span><span>${f(p)}</span></div><div><span>% ของแผน</span><span><b>${f(v)}%</b></span></div>"/>`});
+  h+=`<tr><td>${n}</td><td>${nm}</td><td>${u}</td><td class="n">${f(y)}</td><td class="n">${f(p)}</td><td class="n"><b>${f(a)}</b></td><td class="n hc ${hc(pc)}" style="min-width:48px">${ps(pc)}%</td><td class="n">${d}</td><td>${sv}</svg></td></tr>`});
+ document.getElementById('kt').innerHTML=h}
+// ---- Tab 2
+let M=0,ST='';
+function mode(){M=1-M;m2.classList.toggle('on',!!M);draw()}
+function ss(v){ST=ST==v?'':v;draw()}
+function rf(){M=0;ST='';SY=SA=false;fg.value='';fa.value='';m2.classList.remove('on');b68.classList.remove('on');bag.classList.remove('on');load()}
+let SY=false,SA=false;
+function tg(k){if(k=='y')SY=!SY;else SA=!SA;b68.classList.toggle('on',SY);bag.classList.toggle('on',SA);draw()}
+function draw(){const gi=fg.value,ag=fa.value;
+ let base=I.filter(i=>(gi==''||i[2]==gi)&&(ag==''||i[9].includes(ag)||i[9]=='ทุกหน่วยงาน'));
+ const S=r=>{const c=pct(r[6],r[5],r[8]);return c==null?'w':c>=100?'p':'f'};
+ const cnt={p:0,f:0,w:0};base.forEach(r=>cnt[S(r)]++);
+ let rows=ST?base.filter(r=>S(r)==ST):[...base];
+ if(M)rows.sort((a,b)=>a[2]-b[2]||a[0]-b[0]);
+ const NC=11+(SY?1:0)+(SA?1:0);lgy.style.display=SY?'':'none';
+ let h='<tr><th>ข้อ</th><th style="text-align:left">ตัวชี้วัด</th>'+(SA?'<th>หน่วยงานที่เกี่ยวข้อง</th>':'')+(SY?'<th class="n">ผล 68</th>':'')+'<th class="n">แผน 69</th><th class="n">ผล 69</th><th>หน่วย</th><th>Bullet (% ของแผน)</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>รวม %</th></tr>';
+ let last=-1;
+ rows.forEach(r=>{const[n,nm,g,u,y,p,a,q,t,ags]=r;
+  if(M&&g!=last){h+=`<tr class="g"><td colspan="${NC}">เป้าหมาย ${g+1}: ${GO[g]}</td></tr>`;last=g}
+  const pc=pct(a,p,t),py=y==null?null:pct(y,p,t=='l'?'s':t),c=cum(q,t).map(v=>pct(v,p,t));
+  const bw=pc==null?0:Math.min(pc,150)/150*100;
+  h+=`<tr><td>${n}</td><td class="nm">${nm}</td>${SA?`<td>${ags}</td>`:''}${SY?`<td class="n">${f(y)}</td>`:''}<td class="n">${f(p)}</td><td class="n"><b>${a==null?'รอรายงาน':f(a)}</b></td><td>${u}</td>
+  <td><div class="bl" title="ผล 69: ${f(pc)}%${SY?' · ผล 68: '+f(py)+'%':''}"><i style="width:${bw}%"></i><b style="left:66.7%"></b>${SY&&py!=null?`<u style="left:${Math.min(py,150)/1.5}%"></u>`:''}</div></td>
+  ${q.map((v,k)=>`<td class="hc ${hc(c[k])}" title="สะสม ${f(c[k])}% ของแผน">${f(v)}</td>`).join('')}<td class="hc ${hc(pc)}">${pc==null?'–':f(pc)+'%'}</td></tr>`});
+ tb.innerHTML=h;
+ const ch=(k,l,v)=>`<span onclick="ss('${k}')" class="${ST==k?'on':''}">${l}: <b>${v}</b></span>`;
+ st.innerHTML=`<span onclick="ss('')" class="${ST==''?'on':''}">ทั้งหมด: <b>${base.length}</b></span>`+ch('p','ผ่าน (≥100%)',cnt.p)+ch('f','ไม่ผ่าน',cnt.f)+ch('w','รอรายงาน',cnt.w);
+ fl.textContent='ตัวกรอง: '+(M?'จัดกลุ่มตามเป้าหมาย':'เรียงตามข้อ')+' · '+(gi===''?'ทุกเป้าหมาย':'เป้าหมาย '+(+gi+1))+' · '+(ag===''?'ทุกหน่วยงาน':ag+' '+AG[ag])+' · สถานะ: '+({'':'ทั้งหมด',p:'ผ่าน',f:'ไม่ผ่าน',w:'รอรายงาน'})[ST]}
+fg.innerHTML='<option value="">เป้าหมายกระทรวง: ทั้งหมด</option>'+GO.map((g,i)=>`<option value="${i}">${i+1}. ${g}</option>`).join('');
+fa.innerHTML='<option value="">หน่วยงาน: ทั้งหมด</option>'+Object.keys(AG).map(k=>`<option value="${k}">${k} – ${AG[k]}</option>`).join('');
+ab.innerHTML='<b>หน่วยงาน:</b> '+Object.keys(AG).map(k=>k+' '+AG[k]).join(' · ')+'<br>หมายเหตุ: ตัวชี้วัดประเภทมูลค่า/จำนวน แสดงผลสะสมรายไตรมาส · ตัวชี้วัดประเภทร้อยละ/อัตรา แสดงค่าที่รายงานในแต่ละไตรมาสเทียบแผน · ข้อ 14 ยิ่งอันดับน้อยยิ่งดี · แหล่งข้อมูล: Google Sheet (ดึงอัตโนมัติทุก 5 นาที หรือกด ↻ รีเฟรช)';
+const QM=['ต.ค.–ธ.ค. 68','ม.ค.–มี.ค. 69','เม.ย.–มิ.ย. 69','ก.ค.–ก.ย. 69'];
+const tipG=document.getElementById('tip');
+['pointermove','pointerdown'].forEach(n=>document.addEventListener(n,e=>{const h=e.target.closest&&e.target.closest('.qh');if(h){tipG.innerHTML=h.dataset.tip;tipG.style.display='block';tipG.style.left=Math.min(e.clientX+14,innerWidth-270)+'px';tipG.style.top=(e.clientY+14)+'px'}else if(!(e.target.closest&&e.target.closest('.hit')))tipG.style.display='none'}));
+// ---- Google Sheet (published CSV)
+const SHEET='https://docs.google.com/spreadsheets/d/e/2PACX-1vTsV6QstB_HlXL_Ca_BHYGKz17B0rrzPlzmtk5EUU_7lKpTKyJB041eQQfxYm-d2nHjQK9x4UrJeheq/pub?output=csv';
+function csv(t){const r=[];let row=[],c='',q=false;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}else if(ch=='"')q=true;else if(ch==','){row.push(c);c=''}else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;row.push(c);r.push(row);row=[];c=''}else c+=ch}row.push(c);r.push(row);return r}
+const num=x=>{const m=String(x||'').replace(/,/g,'').match(/\d+(\.\d+)?/);return m?parseFloat(m[0]):null};
+function apply(rows){let sec=0,got=0;
+ rows.forEach(r=>{const a=(r[0]||'').trim();
+  if(a.startsWith('ตัวชี้วัดผลสัมฤทธิ์หรือประโยชน์'))sec=1;else if(a.startsWith('ตัวชี้วัดผลการดำเนินงาน'))sec=2;else if(a.startsWith('ปัญหาอุปสรรค'))sec=0;
+  const m=a.match(/^(\d+)\./);if(!sec||!m)return;
+  const n=+m[1],rec=sec==1?K[n-1]:I.find(x=>x[0]==n);if(!rec)return;
+  const o=sec==1?3:4,ty=rec[o+4];
+  const y=num(r[3]),p=num(r[4]),a2=num(r[5]);
+  const q=[6,7,9,10].map(c=>{const v=num(r[c]);return v==null&&ty=='s'&&/^\s*-\s*$/.test(r[c]||'')?0:v});
+  rec[o]=y;if(p!=null)rec[o+1]=p;rec[o+2]=a2;rec[o+3]=q;got++});
+ return got}
+async function load(){try{const r=await fetch(SHEET+'&_='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;if(apply(csv(await r.text()))<30)throw 0;
+  src.textContent='● เชื่อมต่อ Google Sheet · อัปเดต '+new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})}
+ catch(e){src.textContent='○ ใช้ข้อมูลสำรองในไฟล์ (เชื่อมต่อ Google Sheet ไม่ได้)'}
+ radar();kpi();draw()}
+load();setInterval(load,300000);
+addEventListener('beforeprint',()=>{});
+</script></body></html>
